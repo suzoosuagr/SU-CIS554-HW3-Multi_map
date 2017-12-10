@@ -1,0 +1,90 @@
+
+//HW2: Sparse Vector Operations Using Linked List structures
+//Due: 11:59PM, Friday, September 22
+
+//Implement the following member functions for class my_vector:
+//add_node
+//operator+
+//operator*
+
+
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+ofstream out("data1.txt");
+class node {
+public:
+	int value;
+	int position;
+	node * next;
+	node() { value = -9999; position = -1; next = nullptr; }
+	node(int i, int j) { value = i; position = j; next = nullptr; }
+};
+
+class my_vector {
+public:
+	int size;
+	int num_nodes; //number of non-zero elements
+	node * head;
+	my_vector() { size = num_nodes = 0; head = nullptr; }
+
+	void add_node(int v, int p); //add a new node with value v and position p;
+								 //if a node at position p already exists, update its value to v
+
+	void make_random_vector(int s, int n, int k);
+	//set the value of size  to s;
+	//randomly create n nodes in -(k-1) to k-1
+
+	my_vector operator+(my_vector V); //vector addition
+
+	int operator*(my_vector V);//inner product
+
+	void print();
+};
+
+void my_vector::make_random_vector(int s, int n, int k) {
+	size = s;
+	for (int i = 0; i < n; i++) {
+		int p = rand() % s;
+		int v = rand() % (2 * k - 1) - (k - 1);
+		add_node(v, p);
+	}
+}
+
+void my_vector::print() {
+	out << endl;
+	node * p = head;
+	while (p != nullptr) {
+		out << p->value << " " << p->position << "  ";
+		p = p->next;
+	}
+}
+
+my_vector my_vector::operator+(my_vector V) {
+	my_vector temp;
+	//You need to complete the implementation.
+
+
+	return temp;
+
+}
+int main() {
+
+	my_vector V1, V2, V3;
+	V1.make_random_vector(30, 8, 10);
+	V1.print();
+	V2.make_random_vector(30, 6, 10);
+	V2.print();
+	V3 = V1 + V2;
+	V3.print();
+	int inner_product = V1 * V2;
+	out << inner_product << endl;
+
+	out.close();
+	return 0;
+
+}
+
+
