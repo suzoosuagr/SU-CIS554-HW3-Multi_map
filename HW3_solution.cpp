@@ -138,7 +138,7 @@ void print_DB(map<int, map<int, list<course> * >> &DB) {
     for (auto multiinter = DB.begin(); multiinter != DB.end(); ++multiinter) {
         cout<<"name: \t"<<"section: \t"<<"credits: \t"<<"ID:"<<multiinter->first<<endl;
         auto inneriter = multiinter->second.begin();
-        inneriter++;
+        inneriter++;        //there is a nullptr map[id][0],need to jump over it
         for (auto interiter = inneriter; interiter != multiinter->second.end(); ++interiter) {
             cout<<"-->> "<<interiter->first<<" semester ---------------------------"<<endl;
             for (auto iter = interiter->second->begin(); iter != interiter->second->end(); ++iter) {
