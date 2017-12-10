@@ -7,7 +7,7 @@
 //operator+
 //operator*
 
-//by Jiyang Wang 11/08/2017
+
 
 
 
